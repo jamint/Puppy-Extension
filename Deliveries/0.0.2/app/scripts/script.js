@@ -1,5 +1,3 @@
-var hamburger = document.getElementByClassName("hamburger");
-
 if(navigator.onLine) { // true|false
 	console.log("I'm online....");
 } else {
