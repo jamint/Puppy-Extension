@@ -22,18 +22,6 @@ hamburger.on('click', function() {
 	}
 });
 
-function handleVisibilityChange() {
-	if (document.hidden) {
-		// console.log("stop video")
-		removeVideo();
-	} else  {
-		// console.log("start video");
-		showVideo();
-	}
-}
-
-document.addEventListener("visibilitychange", handleVisibilityChange, false);
-
 
 
 
@@ -57,12 +45,14 @@ setInterval(function() {
 }, 1000);
 
 function changeOnlineStatus() {
-	removeVideo();
+	// console.log(content);
+	content.empty();
 	if (onlineStatus === "offline") {
-		// console.log("you're now offline");
+		console.log("you're now offline");
 		offlineMessage.addClass("show");
+		
 	} else {
-		// console.log("you're now online");
+		console.log("you're now online");
 		offlineMessage.removeClass("show");
 		showVideo();
 	}
@@ -71,11 +61,7 @@ function changeOnlineStatus() {
 function showVideo() {
 	setTimeout(function() {
 		content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/tNMfBs6kKK0?autoplay=1" frameborder="0" allowfullscreen></iframe>');
-	}, 500);
-}
-
-function removeVideo() {
-	content.empty();
+	}, 1000)
 }
 
 
