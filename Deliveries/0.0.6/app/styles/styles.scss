@@ -5,7 +5,6 @@ body, html {
     overflow: hidden;
     background-color: #333;
     font-family: 'Helvetica', 'Arial', sans-serif;
-    font-size: 100%;
 }
 .content {
     position: absolute;
@@ -13,10 +12,10 @@ body, html {
     right: 0; 
     bottom: 0; 
     top: 0;
-    transition: left 0.4s ease-out 0s;
 
-    &.move-right {
-		left: 400px;
+    &--is-showing {
+		opacity: 1;
+		visibility: visible;
 	}
 }
 .logo {
@@ -68,22 +67,16 @@ body, html {
 .top-menu {
 	position: absolute;
 	top: 0;
-	color: #eee;
-	left: -503px;
+	left: 0;
 	width: 500px;
 	height: 100%;
-	background-color: #333;
-	transition: left 0.4s ease-out;
-	border: 3px solid black;
-	/*visibility: hidden;*/
-	/*opacity: 0;*/
-	
+	background-color: #bbb;
+	visibility: hidden;
+	opacity: 0;
 
 	&--is-showing {
-		transition: left 0.4s ease-out;
-		left: 0;
-		/*opacity: 1;*/
-		/*visibility: visible;*/
+		opacity: 1;
+		visibility: visible;
 	}
 
 	&__container {
@@ -92,7 +85,7 @@ body, html {
 	}
 }
 a {
-	color: #eee;
+	color: #000;
 }
 a:hover {
 	text-decoration: none;
