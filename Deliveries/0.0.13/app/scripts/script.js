@@ -1,0 +1,140 @@
+var hamburger = $('.hamburger'),
+	onlineStatus = "online",
+	content = $('.content'),
+	offlineMessage = $('.offline-message'),
+	topMenu = $('.top-menu'),
+	nighttimeNotice = $('.nighttime-notice'),
+	nighttimeNoticeCloseBtn = $('.nighttime-notice__close-btn');
+
+var topMenuShowing = false;
+
+
+
+// ---------------- Init --------------------
+
+function init() {
+	showVideo();
+	showNighttimeNotice();
+}
+
+init();
+
+hamburger.on('click', function() {
+	if (topMenuShowing) {
+		topMenu.removeClass('top-menu--is-showing');
+		content.removeClass('move-right');
+		topMenuShowing = false;
+	} else {
+		topMenu.addClass('top-menu--is-showing');
+		content.addClass('move-right');
+		topMenuShowing = true;
+	}
+});
+
+nighttimeNoticeCloseBtn.on('click', function() {
+	createCookie("nighttimeBtnClicked", true);
+	closeNighttimeNotice();
+});
+
+setTimeout(function() {
+	hamburger.addClass("hamburger--is-showing")
+}, 4000);
+
+function handleVisibilityChange() {
+	if (document.hidden) {
+		removeVideo();
+	} else  {
+		showVideo();
+	}
+}
+
+document.addEventListener("visibilitychange", handleVisibilityChange, false);
+
+function showNighttimeNotice() {
+	var hasShown = readCookie("nighttimeBtnClicked");
+	// console.log(hasShown);
+	if (!hasShown) {
+		setTimeout(function() {
+			nighttimeNotice.addClass('show-it');
+		}, 1000);
+		setTimeout(function() {
+			closeNighttimeNotice();
+		}, 9000);
+	}
+}
+
+function closeNighttimeNotice() {
+	nighttimeNotice.removeClass('show-it');
+}
+
+
+
+
+
+// ---------------- Cookies --------------------
+setInterval(function() {
+	var newOnlineStatus = navigator.onLine;
+	if(navigator.onLine) { // true|false
+		newOnlineStatus = "online";
+	} else {
+		newOnlineStatus = "offline";
+	}
+	if (newOnlineStatus != onlineStatus) {
+		onlineStatus = newOnlineStatus;
+		changeOnlineStatus();
+	}
+}, 1000);
+
+function changeOnlineStatus() {
+	removeVideo();
+	if (onlineStatus === "offline") {
+		offlineMessage.addClass("show");
+	} else {
+		offlineMessage.removeClass("show");
+		showVideo();
+	}
+}
+
+function showVideo() {
+	setTimeout(function() {
+		content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/tNMfBs6kKK0?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+	}, 800);
+}
+
+function removeVideo() {
+	content.empty();
+}
+
+
+
+
+
+
+
+// ---------------- Cookie Logic --------------------
+
+function createCookie(name,value,days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	var thing = name+"="+value+expires+"; path=/"
+	document.cookie = thing;
+}
+
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+function eraseCookie(name) {
+	createCookie(name,"",-1);
+}

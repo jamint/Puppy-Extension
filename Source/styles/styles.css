@@ -1,3 +1,11 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
 body, html {
   margin: 0;
   padding: 0;
@@ -5,7 +13,8 @@ body, html {
   overflow: hidden;
   background-color: #333;
   font-family: 'Helvetica', 'Arial', sans-serif;
-  font-size: 100%; }
+  font-size: 100%;
+  box-sizing: border-box; }
 
 .content {
   position: absolute;
@@ -13,13 +22,13 @@ body, html {
   right: 0;
   bottom: 0;
   top: 0;
-  transition: left 0.4s ease-out 0s; }
+  transition: left 0.2s ease-out 0s; }
   .content.move-right {
     left: 400px; }
 
 .logo {
   position: absolute;
-  width: 400px;
+  width: 300px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%); }
@@ -56,12 +65,15 @@ body, html {
 
 .hamburger {
   position: absolute;
-  top: 18px;
+  top: 15px;
   left: 30px;
   color: #FFF;
   cursor: pointer;
-  font-size: 1.5rem;
-  transform: rotate(90deg); }
+  font-size: 1.8rem;
+  transform: scale(0) rotate(90deg); }
+  .hamburger--is-showing {
+    transition: transform 0.4s cubic-bezier(0.04, 0.835, 0.525, 1.65);
+    transform: scale(1) rotate(90deg); }
 
 .top-menu {
   position: absolute;
@@ -71,18 +83,41 @@ body, html {
   width: 500px;
   height: 100%;
   background-color: #333;
-  transition: left 0.4s ease-out;
-  border: 3px solid black;
-  /*visibility: hidden;*/
-  /*opacity: 0;*/ }
+  transition: left 0.2s ease-out;
+  border: 3px solid black; }
   .top-menu--is-showing {
-    transition: left 0.4s ease-out;
-    left: 0;
-    /*opacity: 1;*/
-    /*visibility: visible;*/ }
+    transition: left 0.2s ease-out;
+    left: 0; }
+  .top-menu__school {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: -0.7rem; }
   .top-menu__container {
-    width: 87%;
+    overflow-y: auto;
+    width: 89%;
+    height: 100%;
     margin: 60px auto 0 auto; }
+
+.nighttime-notice {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 500px;
+  background-color: #bbb;
+  padding: 15px;
+  left: -500px;
+  transition: left 0.5s ease-in; }
+  .nighttime-notice.show-it {
+    left: 0;
+    transition: left 0.5s ease-out; }
+  .nighttime-notice__close-btn {
+    text-align: right;
+    transform: scaleY(0.9);
+    cursor: pointer; }
+  .nighttime-notice__close-btn:hover {
+    color: #888; }
+  .nighttime-notice__content {
+    margin-bottom: 6px; }
 
 a {
   color: #eee; }

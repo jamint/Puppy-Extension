@@ -2,15 +2,22 @@ var hamburger = $('.hamburger'),
 	onlineStatus = "online",
 	content = $('.content'),
 	offlineMessage = $('.offline-message'),
-	topMenu = $('.top-menu');
+	topMenu = $('.top-menu'),
+	nighttimeNotice = $('.nighttime-notice'),
+	nighttimeNoticeCloseBtn = $('.nighttime-notice__close-btn');
 
 var topMenuShowing = false;
 
-// createCookie("waka", "waka2")
-// console.log(readCookie("waka"));
+
 
 // ---------------- Init --------------------
-showVideo();
+
+function init() {
+	showVideo();
+	showNighttimeNotice();
+}
+
+init();
 
 hamburger.on('click', function() {
 	if (topMenuShowing) {
@@ -24,6 +31,15 @@ hamburger.on('click', function() {
 	}
 });
 
+nighttimeNoticeCloseBtn.on('click', function() {
+	createCookie("nighttimeBtnClicked", true);
+	closeNighttimeNotice();
+});
+
+setTimeout(function() {
+	hamburger.addClass("hamburger--is-showing")
+}, 4000);
+
 function handleVisibilityChange() {
 	if (document.hidden) {
 		removeVideo();
@@ -34,8 +50,22 @@ function handleVisibilityChange() {
 
 document.addEventListener("visibilitychange", handleVisibilityChange, false);
 
+function showNighttimeNotice() {
+	var hasShown = readCookie("nighttimeBtnClicked");
+	// console.log(hasShown);
+	if (!hasShown) {
+		setTimeout(function() {
+			nighttimeNotice.addClass('show-it');
+		}, 1000);
+		setTimeout(function() {
+			closeNighttimeNotice();
+		}, 9000);
+	}
+}
 
-
+function closeNighttimeNotice() {
+	nighttimeNotice.removeClass('show-it');
+}
 
 
 
@@ -51,7 +81,6 @@ setInterval(function() {
 	}
 	if (newOnlineStatus != onlineStatus) {
 		onlineStatus = newOnlineStatus;
-		// console.log("Status Changed. The new status is: " + navigator.onLine);
 		changeOnlineStatus();
 	}
 }, 1000);
@@ -82,7 +111,7 @@ function removeVideo() {
 
 
 
-// ---------------- Cookies --------------------
+// ---------------- Cookie Logic --------------------
 
 function createCookie(name,value,days) {
 	if (days) {
