@@ -104,11 +104,15 @@ body, html {
   transform: translateY(-50%);
   width: 500px;
   background-color: #bbb;
-  padding: 15px;
+  padding: 5px;
+  padding-left: 13px;
   left: -500px;
-  transition: left 0.5s ease-in; }
+  transition: left 0.5s ease-in;
+  border-radius: 7px; }
+  .nighttime-notice p {
+    margin: 5px; }
   .nighttime-notice.show-it {
-    left: 0;
+    left: -6px;
     transition: left 0.5s ease-out; }
   .nighttime-notice__close-btn {
     text-align: right;
@@ -117,7 +121,19 @@ body, html {
   .nighttime-notice__close-btn:hover {
     color: #888; }
   .nighttime-notice__content {
-    margin-bottom: 6px; }
+    /*margin-bottom: 6px;*/ }
+
+.ok-btn {
+  float: right;
+  margin-right: 9px;
+  margin-bottom: 4px; }
+  .ok-btn__btn {
+    background-color: green;
+    padding: 4px 8px;
+    border-radius: 7px;
+    cursor: pointer; }
+  .ok-btn__btn:hover {
+    background-color: #6aba58; }
 
 a {
   color: #eee; }

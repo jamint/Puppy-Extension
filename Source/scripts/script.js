@@ -4,7 +4,7 @@ var hamburger = $('.hamburger'),
 	offlineMessage = $('.offline-message'),
 	topMenu = $('.top-menu'),
 	nighttimeNotice = $('.nighttime-notice'),
-	nighttimeNoticeCloseBtn = $('.nighttime-notice__close-btn');
+	nighttimeNoticeOKBtn = $('.ok-btn__btn');
 
 var topMenuShowing = false;
 
@@ -31,8 +31,8 @@ hamburger.on('click', function() {
 	}
 });
 
-nighttimeNoticeCloseBtn.on('click', function() {
-	createCookie("nighttimeBtnClicked", true);
+nighttimeNoticeOKBtn.on('click', function() {
+	createCookie("nighttimeBtnClicked", true, 30);
 	closeNighttimeNotice();
 });
 
@@ -52,7 +52,6 @@ document.addEventListener("visibilitychange", handleVisibilityChange, false);
 
 function showNighttimeNotice() {
 	var hasShown = readCookie("nighttimeBtnClicked");
-	// console.log(hasShown);
 	if (!hasShown) {
 		setTimeout(function() {
 			nighttimeNotice.addClass('show-it');
