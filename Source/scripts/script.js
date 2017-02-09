@@ -2,8 +2,8 @@ var hamburger = $('.hamburger'),
 	onlineStatus = "online",
 	content = $('.content'),
 	offlineMessage = $('.offline-message'),
-	topMenu = $('.top-menu'),
-	nighttimeNotice = $('.nighttime-notice'),
+	topMenu = $('.left-menu'),
+	nighttimeNotice = $('.alert-tab'),
 	nighttimeNoticeOKBtn = $('.ok-btn__btn');
 
 var topMenuShowing = false;
@@ -21,11 +21,11 @@ init();
 
 hamburger.on('click', function() {
 	if (topMenuShowing) {
-		topMenu.removeClass('top-menu--is-showing');
+		topMenu.removeClass('left-menu--is-showing');
 		content.removeClass('move-right');
 		topMenuShowing = false;
 	} else {
-		topMenu.addClass('top-menu--is-showing');
+		topMenu.addClass('left-menu--is-showing');
 		content.addClass('move-right');
 		topMenuShowing = true;
 	}
