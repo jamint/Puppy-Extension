@@ -140,6 +140,9 @@ body, html {
 		margin: 5px;
 		margin-left: 8px;
 	}
+	a {
+		color: #444;
+	}
 	&.show-it {
 		left: -6px;
 		transition: left 0.5s ease-out;

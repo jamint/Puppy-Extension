@@ -14,7 +14,7 @@ var topMenuShowing = false;
 
 function init() {
 	showVideo();
-	showNighttimeNotice();
+	// showNighttimeNotice();
 }
 
 init();
@@ -32,13 +32,14 @@ hamburger.on('click', function() {
 });
 
 nighttimeNoticeOKBtn.on('click', function() {
-	createCookie("nighttimeBtnClicked", true, 30);
+	createCookie("nighttimeBtnClicked2", true, 30);
 	closeNighttimeNotice();
 });
 
 setTimeout(function() {
 	hamburger.addClass("hamburger--is-showing")
 }, 4000);
+// }, 50);
 
 function handleVisibilityChange() {
 	if (document.hidden) {
@@ -51,7 +52,7 @@ function handleVisibilityChange() {
 document.addEventListener("visibilitychange", handleVisibilityChange, false);
 
 function showNighttimeNotice() {
-	var hasShown = readCookie("nighttimeBtnClicked");
+	var hasShown = readCookie("nighttimeBtnClicked2");
 	if (!hasShown) {
 		setTimeout(function() {
 			nighttimeNotice.addClass('show-it');
