@@ -38,8 +38,8 @@ nighttimeNoticeOKBtn.on('click', function() {
 
 setTimeout(function() {
 	hamburger.addClass("hamburger--is-showing")
-}, 4000);
-// }, 50);
+// }, 4000);
+}, 50);
 
 function handleVisibilityChange() {
 	if (document.hidden) {
@@ -97,7 +97,8 @@ function changeOnlineStatus() {
 
 function showVideo() {
 	setTimeout(function() {
-		content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/tNMfBs6kKK0?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+		content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/BH5FnM_dVvE?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+		// content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/tNMfBs6kKK0?autoplay=1" frameborder="0" allowfullscreen></iframe>');
 	}, 800);
 }
 

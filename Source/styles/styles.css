@@ -105,9 +105,9 @@ body, html {
     left: 0; }
   .left-menu__title {
     font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: -0.7rem; }
+    font-size: 1.1rem; }
   .left-menu__scroller {
+    margin-top: -12px;
     overflow-y: auto;
     padding-right: 25px; }
 

@@ -114,9 +114,12 @@ body, html {
 	&__title {
 		font-weight: 700;
 		font-size: 1.1rem;
-		margin-bottom: -0.7rem;
+		// margin-bottom: -100px;
+	}
+	&__location {
 	}
 	&__scroller {
+		margin-top: -12px;
 		overflow-y: auto;
 		padding-right: 25px;
 	}
