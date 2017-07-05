@@ -1,46 +1,23 @@
-var hamburger = $('.hamburger'),
-	onlineStatus = "online",
+var headerTitle = $('.header__title'),
 	content = $('.content'),
 	offlineMessage = $('.offline-message'),
 	topMenu = $('.left-menu'),
-	nighttimeNotice = $('.alert-tab'),
-	nighttimeNoticeOKBtn = $('.ok-btn__btn');
+	video0 = $('.thumbs-container .video0'),
+	video1 = $('.thumbs-container .video1'),
+	video2 = $('.thumbs-container .video2'),
+	video3 = $('.thumbs-container .video3'),
+	video4 = $('.thumbs-container .video4'),
+	video5 = $('.thumbs-container .video5'),
+	currVideo = 0;
 
-var topMenuShowing = false;
-
-
-
-// ---------------- Init --------------------
-
+$(window).ready(function() {
+	init();
+	document.addEventListener("visibilitychange", handleVisibilityChange, false);
+});
 function init() {
 	showVideo();
-	// showNighttimeNotice();
+	showThumbVideos();
 }
-
-init();
-
-hamburger.on('click', function() {
-	if (topMenuShowing) {
-		topMenu.removeClass('left-menu--is-showing');
-		content.removeClass('move-right');
-		topMenuShowing = false;
-	} else {
-		topMenu.addClass('left-menu--is-showing');
-		content.addClass('move-right');
-		topMenuShowing = true;
-	}
-});
-
-nighttimeNoticeOKBtn.on('click', function() {
-	createCookie("nighttimeBtnClicked2", true, 30);
-	closeNighttimeNotice();
-});
-
-setTimeout(function() {
-	hamburger.addClass("hamburger--is-showing")
-// }, 4000);
-}, 50);
-
 function handleVisibilityChange() {
 	if (document.hidden) {
 		removeVideo();
@@ -48,94 +25,48 @@ function handleVisibilityChange() {
 		showVideo();
 	}
 }
-
-document.addEventListener("visibilitychange", handleVisibilityChange, false);
-
-function showNighttimeNotice() {
-	var hasShown = readCookie("nighttimeBtnClicked2");
-	if (!hasShown) {
-		setTimeout(function() {
-			nighttimeNotice.addClass('show-it');
-		}, 1000);
-		setTimeout(function() {
-			closeNighttimeNotice();
-		}, 9000);
-	}
-}
-
-function closeNighttimeNotice() {
-	nighttimeNotice.removeClass('show-it');
-}
-
-
-
-
-
-// ---------------- Cookies --------------------
-setInterval(function() {
-	var newOnlineStatus = navigator.onLine;
-	if(navigator.onLine) { // true|false
-		newOnlineStatus = "online";
-	} else {
-		newOnlineStatus = "offline";
-	}
-	if (newOnlineStatus != onlineStatus) {
-		onlineStatus = newOnlineStatus;
-		changeOnlineStatus();
-	}
-}, 1000);
-
-function changeOnlineStatus() {
-	removeVideo();
-	if (onlineStatus === "offline") {
-		offlineMessage.addClass("show");
-	} else {
-		offlineMessage.removeClass("show");
-		showVideo();
-	}
-}
-
 function showVideo() {
 	setTimeout(function() {
-		content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/BH5FnM_dVvE?autoplay=1" frameborder="0" allowfullscreen></iframe>');
-		// content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/tNMfBs6kKK0?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+		changeVideo(currVideo)
 	}, 800);
 }
-
 function removeVideo() {
 	content.empty();
 }
-
-
-
-
-
-
-
-// ---------------- Cookie Logic --------------------
-
-function createCookie(name,value,days) {
-	if (days) {
-		var date = new Date();
-		date.setTime(date.getTime()+(days*24*60*60*1000));
-		var expires = "; expires="+date.toGMTString();
-	}
-	else var expires = "";
-	var thing = name+"="+value+expires+"; path=/"
-	document.cookie = thing;
+function showThumbVideos() {
+	video0.click(function() {
+		// warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam
+		changeVideo(0);
+	});
+	video1.click(function() {
+		// warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam-3
+		changeVideo(1);
+	});
+	video2.click(function() {
+		// Warrior Canine Connection - Patio Puppy Cam - http://explore.org/live-cams/player/service-puppy-cam-2
+		changeVideo(2);
+	});
+	video3.click(function() {
+		// Golden Retriever Puppies - Daisy’s Litter at ECAD - http://explore.org/live-cams/player/east-coast-assistance-dogs-cam-2
+		changeVideo(3);
+	});
+	video4.click(function() {
+		// ECAD - Midori's Litter - http://explore.org/live-cams/player/east-coast-assistance-dogs-cam
+		changeVideo(4);
+	});
+	video5.click(function() {
+		// Great Danes Indoor Puppy Room - http://explore.org/live-cams/player/great-danes-indoor-room-puppy-cam-2
+		changeVideo(5);
+	});
 }
-
-function readCookie(name) {
-	var nameEQ = name + "=";
-	var ca = document.cookie.split(';');
-	for(var i=0;i < ca.length;i++) {
-		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1,c.length);
-		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+function changeVideo(num, title) {
+	currVideo = num;
+	headerTitle.html(videos[currVideo].title);
+	content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videos[currVideo].src + '?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+	for (var i = 0; i<6; i++) {
+		var thumb = $('.thumbs-container .video' + i);
+		thumb.css('background-color', 'black');
 	}
-	return null;
-}
-
-function eraseCookie(name) {
-	createCookie(name,"",-1);
+	var thumbSelected = $('.thumbs-container .video' + currVideo);
+	thumbSelected.css('background-color', 'orange');
 }
