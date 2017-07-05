@@ -8,15 +8,26 @@ var headerTitle = $('.header__title'),
 	video3 = $('.thumbs-container .video3'),
 	video4 = $('.thumbs-container .video4'),
 	video5 = $('.thumbs-container .video5'),
-	currVideo = 0;
+	currVideo = 0,
+	panelOpen = false;
 
 $(window).ready(function() {
 	init();
-	document.addEventListener("visibilitychange", handleVisibilityChange, false);
 });
 function init() {
 	showVideo();
 	showThumbVideos();
+	animateThumbPanel();
+	document.addEventListener("visibilitychange", handleVisibilityChange, false);
+	$(document).mousemove(handleMouseMove)
+}
+function handleMouseMove() {
+console.log('move')
+}
+function openVideoPanel() {
+
+}
+function closeVideoPanel() {
 }
 function handleVisibilityChange() {
 	if (document.hidden) {
@@ -65,8 +76,19 @@ function changeVideo(num, title) {
 	content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videos[currVideo].src + '?autoplay=1" frameborder="0" allowfullscreen></iframe>');
 	for (var i = 0; i<6; i++) {
 		var thumb = $('.thumbs-container .video' + i);
-		thumb.css('background-color', 'black');
+		thumb.css('border-width', 0);
+		thumb.css('border-color', 'orange');
+		thumb.css('border-style', 'solid');
+		thumb.css('pointer-events', 'auto');
+		// thumb.css('opacity', 'inherit');
 	}
 	var thumbSelected = $('.thumbs-container .video' + currVideo);
-	thumbSelected.css('background-color', 'orange');
+	thumbSelected.css('border-width', '7px');
+	thumbSelected.css('pointer-events', 'none');
+	// thumbSelected.css('opacity', 0.7);
+}
+function animateThumbPanel() {
+	const thumbsContainer = $('.thumbs-container');
+	TweenMax.set(thumbsContainer, {opacity: 1});
+	TweenMax.from(thumbsContainer, 1, {y: "+=170", delay: 2, ease: Expo.easeOut})
 }

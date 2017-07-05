@@ -5,10 +5,12 @@
     <title>New Tab</title>
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
   </head>
   <body>
     <img class="logo" src="assets/logo3.svg" />
     <div class="content"></div>
+    <div class="overlay"></div>
     <div class="top-bar"></div>
     <div class="bottom-bar"></div>
     <div class="header">
@@ -18,12 +20,12 @@
     </div>
     <div class="thumbs-container">
         <ul>
-            <li class="video video0"><img src="assets/video0-thumb.jpg"/></li>
-            <li class="video video1"><img src="assets/video1-thumb.jpg"/></li>
-            <li class="video video2"><img src="assets/video2-thumb.jpg"/></li>
-            <li class="video video3"><img src="assets/video3-thumb.jpg"/></li>
-            <li class="video video4"><img src="assets/video4-thumb.jpg"/></li>
-            <li class="video video5"><img src="assets/video5-thumb.jpg"/></li>
+            <li class="video video0" style="background-image: url(assets/video0-thumb.jpg);"></li>
+            <li class="video video1" style="background-image: url(assets/video1-thumb.jpg);"></li>
+            <li class="video video2" style="background-image: url(assets/video2-thumb.jpg);"></li>
+            <li class="video video3" style="background-image: url(assets/video3-thumb.jpg);"></li>
+            <li class="video video4" style="background-image: url(assets/video4-thumb.jpg);"></li>
+            <li class="video video5" style="background-image: url(assets/video5-thumb.jpg);"></li>
         </ul>
     </div>
     <script src="scripts/vendor/jquery-3.1.1.min.js"></script>
