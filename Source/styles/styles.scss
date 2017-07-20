@@ -33,6 +33,7 @@ body, html {
 	height: 100vh;
 	background: black;
 	opacity: 0.01;
+	user-select: none;
 }
 .logo {
 	position: absolute;
@@ -40,15 +41,6 @@ body, html {
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-}
-.header {
-	position: absolute;
-	height: 60px;
-	padding: 18px 30px;
-	&__title {
-		color: #bbb;
-		font-size: 1.5em;
-	}
 }
 .top-bar {
 	position: absolute;
@@ -69,3 +61,4 @@ body, html {
 	color: white;
 }
 @import './_thumbs-container';
+@import './_header-container';

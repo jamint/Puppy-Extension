@@ -1,0 +1,10 @@
+.header-container {
+    opacity: 0;
+	position: absolute;
+	height: 60px;
+	padding: 18px 30px;
+	&__title {
+		color: #bbb;
+		font-size: 1.5em;
+	}
+}

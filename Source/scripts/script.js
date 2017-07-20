@@ -1,6 +1,5 @@
-var headerTitle = $('.header__title'),
+var headerTitle = $('.header-container__title'),
 	content = $('.content'),
-	offlineMessage = $('.offline-message'),
 	topMenu = $('.left-menu'),
 	video0 = $('.thumbs-container .video0'),
 	video1 = $('.thumbs-container .video1'),
@@ -8,26 +7,65 @@ var headerTitle = $('.header__title'),
 	video3 = $('.thumbs-container .video3'),
 	video4 = $('.thumbs-container .video4'),
 	video5 = $('.thumbs-container .video5'),
+	// video6 = $('.thumbs-container .video6'),
 	currVideo = 0,
-	panelOpen = false;
+	panelOpen = false,
+	thumbsContainer = $('.thumbs-container'),
+	headerContainer = $('.header-container'),
+	mouseMovedBeforeTimerEnded = false,
+	currMouseX,
+	currMouseY,
+	oldMouseX,
+	oldMouseY,
+	int,
+	evt;
+
+var thumbsShowDelay = 5000;
+// var thumbsShowDelay = 0;
+
+var ran = Math.floor(Math.random() * otherVideos.length);
+// var ran = 7;
 
 $(window).ready(function() {
 	init();
 });
 function init() {
 	showVideo();
-	showThumbVideos();
-	animateThumbPanel();
-	document.addEventListener("visibilitychange", handleVisibilityChange, false);
-	$(document).mousemove(handleMouseMove)
-}
-function handleMouseMove() {
-console.log('move')
-}
-function openVideoPanel() {
+	initListeners();
+	createThumb5();
 
+	document.addEventListener("visibilitychange", handleVisibilityChange, false);
+	setTimeout(function() {
+		animateThumbPanelOpen();
+	}, thumbsShowDelay);
+	setTimeout(function() {
+		animateThumbPanelClosed();
+		$(document).mousemove(handleMouseMove);
+		window.requestAnimationFrame(tick);
+	}, 7000);
 }
-function closeVideoPanel() {
+function createThumb5() {
+	// ran = Math.floor(Math.random() * otherVideos.length);
+	console.log(ran)
+	$('.thumbs-container .video5 .image').css('background-image', 'url(assets/youtube-thumbs/'+otherVideos[ran].src+'.jpg)');
+}
+function tick() {
+	oldMouseX = currMouseX;
+	if (evt) {
+		currMouseX = evt.clientX;
+	}
+	if (currMouseX != oldMouseX && currMouseX != undefined) {
+		animateThumbPanelOpen();
+	}
+	window.requestAnimationFrame(tick);
+}
+function handleMouseMove(e) {
+	evt = e;
+	clearInterval(int);
+	int = setTimeout(function() {
+		animateThumbPanelClosed();
+	}, 2000);
+	animateThumbPanelOpen();
 }
 function handleVisibilityChange() {
 	if (document.hidden) {
@@ -44,51 +82,63 @@ function showVideo() {
 function removeVideo() {
 	content.empty();
 }
-function showThumbVideos() {
+function initListeners() {
 	video0.click(function() {
-		// warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam
 		changeVideo(0);
 	});
 	video1.click(function() {
-		// warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam-3
 		changeVideo(1);
 	});
 	video2.click(function() {
-		// Warrior Canine Connection - Patio Puppy Cam - http://explore.org/live-cams/player/service-puppy-cam-2
 		changeVideo(2);
 	});
 	video3.click(function() {
-		// Golden Retriever Puppies - Daisy’s Litter at ECAD - http://explore.org/live-cams/player/east-coast-assistance-dogs-cam-2
 		changeVideo(3);
 	});
 	video4.click(function() {
-		// ECAD - Midori's Litter - http://explore.org/live-cams/player/east-coast-assistance-dogs-cam
 		changeVideo(4);
 	});
 	video5.click(function() {
-		// Great Danes Indoor Puppy Room - http://explore.org/live-cams/player/great-danes-indoor-room-puppy-cam-2
 		changeVideo(5);
 	});
+	// video6.click(function() {
+	// 	changeVideo(6);
+	// });
 }
-function changeVideo(num, title) {
+function changeVideo(num) {
+	let vidSrc;
 	currVideo = num;
-	headerTitle.html(videos[currVideo].title);
-	content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videos[currVideo].src + '?autoplay=1" frameborder="0" allowfullscreen></iframe>');
-	for (var i = 0; i<6; i++) {
+	if (currVideo == 5) {
+		headerTitle.html(otherVideos[ran].title);
+		vidSrc = otherVideos[ran].src;
+	} else {
+		headerTitle.html(videos[currVideo].title);
+		vidSrc = videos[currVideo].src;
+	}
+	content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + vidSrc + '?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+	for (var i = 0; i<7; i++) {
 		var thumb = $('.thumbs-container .video' + i);
 		thumb.css('border-width', 0);
 		thumb.css('border-color', 'orange');
 		thumb.css('border-style', 'solid');
 		thumb.css('pointer-events', 'auto');
-		// thumb.css('opacity', 'inherit');
 	}
 	var thumbSelected = $('.thumbs-container .video' + currVideo);
 	thumbSelected.css('border-width', '7px');
 	thumbSelected.css('pointer-events', 'none');
-	// thumbSelected.css('opacity', 0.7);
+	if (currVideo === 5) {
+		console.log("it's 5");
+		$('.thumbs-container .video5 .new').css('display', 'none');
+	} else {
+		$('.thumbs-container .video5 .new').css('display', 'block');
+	}
+
 }
-function animateThumbPanel() {
-	const thumbsContainer = $('.thumbs-container');
-	TweenMax.set(thumbsContainer, {opacity: 1});
-	TweenMax.from(thumbsContainer, 1, {y: "+=170", delay: 2, ease: Expo.easeOut})
+function animateThumbPanelOpen() {
+	TweenMax.to(thumbsContainer, 1, {alpha: 1, ease: Power4.easeOut});
+	TweenMax.to(headerContainer, 1, {alpha: 1, ease: Power4.easeOut});
+}
+function animateThumbPanelClosed() {
+	TweenMax.to(thumbsContainer, 0.5, {alpha: 0, ease: Power4.easeOut});
+	TweenMax.to(headerContainer, 0.5, {alpha: 0, ease: Power4.easeOut});
 }

@@ -5,7 +5,6 @@
     <title>New Tab</title>
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
   </head>
   <body>
     <img class="logo" src="assets/logo3.svg" />
@@ -13,22 +12,28 @@
     <div class="overlay"></div>
     <div class="top-bar"></div>
     <div class="bottom-bar"></div>
-    <div class="header">
-        <div class="header__title">
-            Canine Warrior Connection
+    <div class="header-container">
+        <div class="header-container__title">
+            <!-- This should be overwritten -->
         </div>
     </div>
     <div class="thumbs-container">
         <ul>
             <li class="video video0" style="background-image: url(assets/video0-thumb.jpg);"></li>
             <li class="video video1" style="background-image: url(assets/video1-thumb.jpg);"></li>
-            <li class="video video2" style="background-image: url(assets/video2-thumb.jpg);"></li>
-            <li class="video video3" style="background-image: url(assets/video3-thumb.jpg);"></li>
-            <li class="video video4" style="background-image: url(assets/video4-thumb.jpg);"></li>
-            <li class="video video5" style="background-image: url(assets/video5-thumb.jpg);"></li>
+            <!-- <li class="video video2" style="background-image: url(assets/video2-thumb.jpg);"></li> -->
+            <li class="video video2" style="background-image: url(assets/video3-thumb.jpg);"></li>
+            <li class="video video3" style="background-image: url(assets/video4-thumb.jpg);"></li>
+            <li class="video video4" style="background-image: url(assets/video5-thumb.jpg);"></li>
+            <li class="video video5">
+                <div class="image" style="background-image: url(assets/youtube-thumbs/a6KGPBflhiM.jpg);"></div>
+                <div class="new" style="background-image: url(assets/youtube-thumbs/new-video.png);"></div>
+            </li>
         </ul>
     </div>
     <script src="scripts/vendor/jquery-3.1.1.min.js"></script>
+    <script src="scripts/vendor/TweenMax.min.js"></script>
+    <script src="scripts/vendor/lodash.min.js"></script>
     <script src="scripts/model.js"></script>
     <script src="scripts/script.js"></script>
   </body>
