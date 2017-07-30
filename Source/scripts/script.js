@@ -21,10 +21,10 @@ var headerTitle = $('.header-container__title'),
 	evt;
 
 var thumbsShowDelay = 5000;
-// var thumbsShowDelay = 0;
+// var thumbsShowDelay = 0.3;
 
 var ran = Math.floor(Math.random() * otherVideos.length);
-// var ran = 7;
+// var ran = 11;
 
 $(window).ready(function() {
 	init();
@@ -116,7 +116,7 @@ function changeVideo(num) {
 		vidSrc = videos[currVideo].src;
 	}
 	content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + vidSrc + '?autoplay=1" frameborder="0" allowfullscreen></iframe>');
-	for (var i = 0; i<7; i++) {
+	for (var i = 0; i<6; i++) {
 		var thumb = $('.thumbs-container .video' + i);
 		thumb.css('border-width', 0);
 		thumb.css('border-color', 'orange');
