@@ -1,7 +1,7 @@
 var videos = [
+    {src: "tNMfBs6kKK0", title: "Bergin University of Canine Studies"}, // warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam
     {src: "BH5FnM_dVvE", title: "Warrior Canine Connection"}, // warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam
     {src: "-CpDQ6BT5mk", title: "Warrior Canine Connection Nursery Cam"}, // warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam-3
-    // {src: "vFmkfiLnGIE", title: "Warrior Canine Connection Patio Cam"}, // Warrior Canine Connection - Patio Puppy Cam - http://explore.org/live-cams/player/service-puppy-cam-2
     {src: "PPmnFbpnvMQ", title: "Golden Retriever Puppies - Daisy's Litter at ECAD"}, // Golden Retriever Puppies - Daisy’s Litter at ECAD - http://explore.org/live-cams/player/east-coast-assistance-dogs-cam-2
     {src: "RTfKYDIhlVE", title: "Golden Retriever Puppies - Midori's Litter at ECAD"}, // ECAD - Midori's Litter - http://explore.org/live-cams/player/east-coast-assistance-dogs-cam
     {src: "Gh1ggRitrpw", title: "Great Dane Indoor Puppy Room"}, // Great Danes Indoor Puppy Room - http://explore.org/live-cams/player/great-danes-indoor-room-puppy-cam-2
@@ -18,5 +18,6 @@ var otherVideos = [
     {src: "2n-g0ZMdAqI", title: "Funniest & Cutest Golden Retriever Videos #29 - Compilation 2017"}, //https://www.youtube.com/watch?v=2n-g0ZMdAqI
     {src: "MyvHzjla_xg", title: "Funniest & Cutest Golden Retriever Videos #1 - Compilation 2017"}, //https://www.youtube.com/watch?v=MyvHzjla_xg
     {src: "3Hm71wYHAtY", title: "Funniest & Cutest Golden Retriever Videos #2 - Compilation 2017"}, //https://www.youtube.com/watch?v=3Hm71wYHAtY
-    {src: "-qpwXhV7pIw", title: "Munchkin in Miami"} //https://www.youtube.com/watch?v=-qpwXhV7pIw
+    {src: "-qpwXhV7pIw", title: "Munchkin in Miami"}, //https://www.youtube.com/watch?v=-qpwXhV7pIw
+    {src: "CFEuP04qj4c", title: "18 Funny Husky Puppies Video Compilation 2016"} //https://www.youtube.com/watch?v=CFEuP04qj4c
 ];

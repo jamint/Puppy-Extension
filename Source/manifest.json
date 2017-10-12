@@ -1,8 +1,19 @@
 {
 	"name": "Puppy Tab",
 	"short_name": "Puppy Tab",
-	"version": "0.0.28",
-	"manifest_version": 2,
+	"version": "0.1.0",
+    "manifest_version": 2,
+    "browser_action": {
+		"default_title": "Puppy Tab",
+		"default_icon": {
+         	"48": "img/icon48.png",
+         	"128": "img/icon128.png"
+         }
+	},
+	"icons": {
+     	"48": "img/icon48.png",
+     	"128": "img/icon128.png"
+    },
 	"chrome_url_overrides" : {
 		"newtab": "newpage.html"
 	},

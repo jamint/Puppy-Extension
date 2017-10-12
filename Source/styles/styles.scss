@@ -28,12 +28,16 @@ body, html {
 	}
 }
 .overlay {
+	visibility: visible;
 	position: absolute;
 	width: 100vw;
 	height: 100vh;
 	background: black;
 	opacity: 0.01;
 	user-select: none;
+	&.hidden {
+		visibility: hidden;
+	}
 }
 .logo {
 	position: absolute;

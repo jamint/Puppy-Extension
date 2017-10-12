@@ -27,12 +27,15 @@ body, html {
     left: 400px; }
 
 .overlay {
+  visibility: visible;
   position: absolute;
   width: 100vw;
   height: 100vh;
   background: black;
   opacity: 0.01;
   user-select: none; }
+  .overlay.hidden {
+    visibility: hidden; }
 
 .logo {
   position: absolute;
@@ -71,11 +74,13 @@ body, html {
   padding: 0;
   margin: 0; }
   .thumbs-container ul {
-    background: orange;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     list-style-type: none;
-    margin: 5px auto;
+    margin: 5px 0;
     padding: 0;
-    width: 958px; }
+    width: 793px; }
     .thumbs-container ul li {
       cursor: pointer;
       float: left;
@@ -84,14 +89,14 @@ body, html {
       margin: 2px 4px;
       background-size: cover;
       overflow: hidden; }
-      .thumbs-container ul li.video5 {
+      .thumbs-container ul li.video4, .thumbs-container ul li.video5 {
         position: relative; }
-        .thumbs-container ul li.video5 .image {
+        .thumbs-container ul li.video4 .image, .thumbs-container ul li.video5 .image {
           position: absolute;
           background-size: cover;
           width: 150px;
           height: 90px; }
-        .thumbs-container ul li.video5 .new {
+        .thumbs-container ul li.video4 .new, .thumbs-container ul li.video5 .new {
           position: absolute;
           background-size: cover;
           width: 150px;

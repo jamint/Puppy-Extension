@@ -10,11 +10,13 @@
     padding: 0;
     margin: 0;
     ul {
-        background: orange;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
         list-style-type: none;
-        margin: 5px auto;
+        margin: 5px 0;
         padding: 0;
-        width: 958px;
+        width: 793px;
         li {
             cursor: pointer;
             float: left;
@@ -23,7 +25,7 @@
             margin: 2px 4px;
             background-size: cover;
             overflow: hidden;
-            &.video5 {
+            &.video4, &.video5 {
                 position: relative;
                 .image {
                     position: absolute;
