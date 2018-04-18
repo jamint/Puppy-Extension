@@ -1,7 +1,7 @@
 var videos = [
     {src: "tNMfBs6kKK0", title: "Bergin University of Canine Studies"}, // warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam
-    {src: "BH5FnM_dVvE", title: "Warrior Canine Connection"}, // warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam
-    {src: "-CpDQ6BT5mk", title: "Warrior Canine Connection Nursery Cam"}, // warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam-3
+    {src: "wi8rq-t_PBc", title: "Great Danes Nursery"}, // warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam
+    {src: "RxuR0qFD6yo", title: "Warrior Canine Connection Nursery Cam"}, // warrior canine connection - nursery cam - http://explore.org/live-cams/player/service-puppy-cam-3
     {src: "PPmnFbpnvMQ", title: "Golden Retriever Puppies - Daisy's Litter at ECAD"}, // Golden Retriever Puppies - Daisy’s Litter at ECAD - http://explore.org/live-cams/player/east-coast-assistance-dogs-cam-2
     {src: "RTfKYDIhlVE", title: "Golden Retriever Puppies - Midori's Litter at ECAD"}, // ECAD - Midori's Litter - http://explore.org/live-cams/player/east-coast-assistance-dogs-cam
     {src: "Gh1ggRitrpw", title: "Great Dane Indoor Puppy Room"}, // Great Danes Indoor Puppy Room - http://explore.org/live-cams/player/great-danes-indoor-room-puppy-cam-2

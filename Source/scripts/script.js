@@ -1,14 +1,13 @@
 var headerTitle = $('.header-container__title'),
-    content = $('.content'),
+    content = $('#content'),
     topMenu = $('.left-menu'),
     video0 = $('.thumbs-container .video0'),
     video1 = $('.thumbs-container .video1'),
     video2 = $('.thumbs-container .video2'),
     video3 = $('.thumbs-container .video3'),
     video4 = $('.thumbs-container .video4'),
-    // video5 = $('.thumbs-container .video5'),
     overlay = $('.overlay'),
-    currVideo = 0,
+    currVideo = null,
     panelOpen = false,
     thumbsContainer = $('.thumbs-container'),
     headerContainer = $('.header-container'),
@@ -32,8 +31,6 @@ $(window).ready(function () {
 function init() {
     showVideo();
     initListeners();
-    // createThumb5();
-
     document.addEventListener("visibilitychange", handleVisibilityChange, false);
     setTimeout(function () {
         animateThumbPanelOpen();
@@ -74,9 +71,18 @@ function handleVisibilityChange() {
         showVideo();
     }
 }
-function showVideo() {
+function setVideoNum() {
+    const prevSceneViewedIndex = JSON.parse(localStorage.getItem("lastVideo"));
+    if (prevSceneViewedIndex === null) {
+        currVideo = 0;
+    } else {
+        currVideo = prevSceneViewedIndex;
+    }
+}
+const showVideo = () => {
+    setVideoNum();
     setTimeout(function () {
-        changeVideo(currVideo)
+        changeVideo(currVideo);
     }, 800);
 }
 function removeVideo() {
@@ -114,7 +120,11 @@ function changeVideo(num) {
         headerTitle.html(videos[currVideo].title);
         vidSrc = videos[currVideo].src;
     }
-    content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + vidSrc + '?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+
+
+    
+
+    content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + vidSrc + '?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
     for (var i = 0; i < 4; i++) {
         var thumb = $('.thumbs-container .video' + i);
         thumb.css('border-width', 0);
@@ -126,11 +136,14 @@ function changeVideo(num) {
     thumbSelected.css('border-width', '7px');
     thumbSelected.css('pointer-events', 'none');
     if (currVideo === 5) {
-        console.log("it's 5");
+        // console.log("it's 5");
         $('.thumbs-container .video5 .new').css('display', 'none');
     } else {
         $('.thumbs-container .video5 .new').css('display', 'block');
     }
+    setTimeout(() => {
+        localStorage.setItem("lastVideo", JSON.stringify(currVideo));
+    }, 4000);
 }
 function animateThumbPanelOpen() {
     TweenMax.to(thumbsContainer, 1, { alpha: 1, ease: Power4.easeOut });
@@ -140,3 +153,36 @@ function animateThumbPanelClosed() {
     TweenMax.to(thumbsContainer, 0.5, { alpha: 0, ease: Power4.easeOut });
     TweenMax.to(headerContainer, 0.5, { alpha: 0, ease: Power4.easeOut });
 }
+
+
+
+
+// // Load the IFrame Player API code asynchronously.
+// var tag = document.createElement('script');
+// tag.src = "https://www.youtube.com/iframe_api";
+// var firstScriptTag = document.getElementsByTagName('script')[0];
+
+// tag.html(firstScriptTag)
+// // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// // Replace the 'ytplayer' element with an <iframe> and
+// // YouTube player after the API code downloads.
+// var player;
+// function onYouTubePlayerAPIReady() {
+//     player = new YT.Player('content', {
+//         videoId: 'tNMfBs6kKK0',
+//         events: {
+//             'onReady': handleReady,
+//             'onStateChange': handleStateChange
+//         }
+//     });
+//     console.log("Poop!!")
+// }
+
+// function handleReady() {
+//     player.playVideo();
+//     console.log("ready")
+// }
+// function handleStateChange() {
+//     console.log('change')
+// }

@@ -16,14 +16,15 @@ body, html {
   font-size: 100%;
   box-sizing: border-box; }
 
-.content {
+#content {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
+  width: 100%;
   transition: left 0.2s ease-out 0s; }
-  .content.move-right {
+  #content.move-right {
     left: 400px; }
 
 .overlay {
