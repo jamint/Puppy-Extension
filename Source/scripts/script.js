@@ -17,13 +17,8 @@ var headerTitle = $('.header-container__title'),
     oldMouseX,
     oldMouseY,
     int,
-    evt;
-
-// var thumbsShowDelay = 5000;
-var thumbsShowDelay = 0.3;
-
-var ran = Math.floor(Math.random() * otherVideos.length);
-// var ran = 12;
+    evt,
+    thumbsShowDelay = 0.3;
 
 $(window).ready(function () {
     init();
@@ -40,11 +35,6 @@ function init() {
         $(document).mousemove(handleMouseMove);
         window.requestAnimationFrame(tick);
     }, 7000);
-}
-function createThumb5() {
-    // ran = Math.floor(Math.random() * otherVideos.length);
-    console.log(ran)
-    $('.thumbs-container .video5 .image').css('background-image', 'url(assets/youtube-thumbs/' + otherVideos[ran].src + '.jpg)');
 }
 function tick() {
     oldMouseX = currMouseX;
@@ -107,25 +97,18 @@ function initListeners() {
 }
 function changeVideo(num) {
     let vidSrc;
-    if (num === 5) {
-        overlay.addClass('hidden');
-    } else {
-        overlay.removeClass('hidden');
-    }
+    // overlay.removeClass('hidden');
     currVideo = num;
-    if (currVideo == 5) {
-        headerTitle.html(otherVideos[ran].title);
-        vidSrc = otherVideos[ran].src;
-    } else {
-        headerTitle.html(videos[currVideo].title);
-        vidSrc = videos[currVideo].src;
-    }
-
-
-    
-
-    content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + vidSrc + '?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
-    for (var i = 0; i < 4; i++) {
+    headerTitle.html(videos[currVideo].title);
+    vidSrc = videos[currVideo].src;
+    console.log(vidSrc);
+    // content.html('<iframe width="640" height="385" src="http://www.youtube.com/embed/0319ZgKMLzw?autoplay=1"> </iframe>');
+    // content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + "a6KGPBflhiM" + '?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+    // setTimeout(function() {
+    content.html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + vidSrc + '?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+    // console.log("ok, again")
+    // }, 2000);
+    for (var i = 0; i < 5; i++) {
         var thumb = $('.thumbs-container .video' + i);
         thumb.css('border-width', 0);
         thumb.css('border-color', 'orange');
@@ -135,15 +118,7 @@ function changeVideo(num) {
     var thumbSelected = $('.thumbs-container .video' + currVideo);
     thumbSelected.css('border-width', '7px');
     thumbSelected.css('pointer-events', 'none');
-    if (currVideo === 5) {
-        // console.log("it's 5");
-        $('.thumbs-container .video5 .new').css('display', 'none');
-    } else {
-        $('.thumbs-container .video5 .new').css('display', 'block');
-    }
-    setTimeout(() => {
-        localStorage.setItem("lastVideo", JSON.stringify(currVideo));
-    }, 4000);
+    localStorage.setItem("lastVideo", JSON.stringify(currVideo));
 }
 function animateThumbPanelOpen() {
     TweenMax.to(thumbsContainer, 1, { alpha: 1, ease: Power4.easeOut });
@@ -153,36 +128,3 @@ function animateThumbPanelClosed() {
     TweenMax.to(thumbsContainer, 0.5, { alpha: 0, ease: Power4.easeOut });
     TweenMax.to(headerContainer, 0.5, { alpha: 0, ease: Power4.easeOut });
 }
-
-
-
-
-// // Load the IFrame Player API code asynchronously.
-// var tag = document.createElement('script');
-// tag.src = "https://www.youtube.com/iframe_api";
-// var firstScriptTag = document.getElementsByTagName('script')[0];
-
-// tag.html(firstScriptTag)
-// // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-// // Replace the 'ytplayer' element with an <iframe> and
-// // YouTube player after the API code downloads.
-// var player;
-// function onYouTubePlayerAPIReady() {
-//     player = new YT.Player('content', {
-//         videoId: 'tNMfBs6kKK0',
-//         events: {
-//             'onReady': handleReady,
-//             'onStateChange': handleStateChange
-//         }
-//     });
-//     console.log("Poop!!")
-// }
-
-// function handleReady() {
-//     player.playVideo();
-//     console.log("ready")
-// }
-// function handleStateChange() {
-//     console.log('change')
-// }

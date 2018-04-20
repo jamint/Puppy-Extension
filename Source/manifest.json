@@ -1,7 +1,7 @@
 {
 	"name": "Puppy Tab",
 	"short_name": "Puppy Tab",
-	"version": "0.1.2",
+	"version": "0.1.4",
     "manifest_version": 2,
     "browser_action": {
 		"default_title": "Puppy Tab",
