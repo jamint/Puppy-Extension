@@ -30,13 +30,16 @@ html {
   #content.move-right {
     left: 400px; }
 
+.hide {
+  display: none; }
+
 .overlay {
-  visibility: hidden;
+  display: none;
+  cursor: pointer;
   position: absolute;
   width: 100vw;
   height: 100vh;
   background: black;
-  opacity: 0.01;
   user-select: none; }
   .overlay.hidden {
     visibility: hidden; }
@@ -68,48 +71,30 @@ html {
 
 .thumbs-container {
   position: absolute;
-  opacity: 0;
-  text-align: center;
-  width: 100%;
-  height: 105px;
-  left: 0;
   bottom: 0;
-  background: #000;
+  left: 0;
+  width: 100vw;
   padding: 0;
-  margin: 0; }
-  .thumbs-container ul {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    list-style-type: none;
-    margin: 5px 0;
+  margin: 0;
+  background: #000; }
+  .thumbs-container .thumbs-container-inside {
+    height: 105px;
     padding: 0;
-    width: 793px; }
-    .thumbs-container ul li {
-      cursor: pointer;
-      float: left;
-      width: 150px;
-      height: 90px;
-      margin: 2px 4px;
-      background-size: cover;
-      overflow: hidden; }
-      .thumbs-container ul li.video4, .thumbs-container ul li.video5 {
-        position: relative; }
-        .thumbs-container ul li.video4 .image, .thumbs-container ul li.video5 .image {
-          position: absolute;
-          background-size: cover;
-          width: 150px;
-          height: 90px; }
-        .thumbs-container ul li.video4 .new, .thumbs-container ul li.video5 .new {
-          position: absolute;
-          background-size: cover;
-          width: 150px;
-          height: 90px; }
-  .thumbs-container li:hover {
-    opacity: 0.5; }
+    margin: 0 auto; }
+    .thumbs-container .thumbs-container-inside ul {
+      text-align: center;
+      list-style-type: none; }
+      .thumbs-container .thumbs-container-inside ul li {
+        background-size: cover;
+        display: inline-block;
+        width: 150px;
+        height: 90px;
+        cursor: pointer;
+        margin: 0 5px; }
+        .thumbs-container .thumbs-container-inside ul li.active {
+          border: 7px solid orange; }
 
 .header-container {
-  opacity: 0;
   position: absolute;
   height: 60px;
   padding: 18px 30px; }

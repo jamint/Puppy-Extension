@@ -1,44 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>New Tab</title>
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/styles.css">
-  </head>
-  <body>
+    <script src="scripts/app.js"></script>
+</head>
+
+<body>
     <img class="logo" src="assets/logo3.svg" />
     <div id="content"></div>
-    <div class="overlay"></div>
+    <!-- <div class="overlay"></div> -->
     <div class="top-bar"></div>
     <div class="bottom-bar"></div>
     <div class="header-container">
         <div class="header-container__title">
-            <!-- This should be overwritten -->
         </div>
     </div>
     <div class="thumbs-container">
-        <ul>
-            <li class="video video0" style="background-image: url(assets/video00-thumb.jpg);"></li>
+        <div class="thumbs-container-inside">
+            <ul class="thumbs">
+                <!-- <li class="video video0" style="background-image: url(assets/video00-thumb.jpg);"></li>
             <li class="video video1" style="background-image: url(assets/video0-thumb.jpg);"></li>
             <li class="video video2" style="background-image: url(assets/video1-thumb.jpg);"></li>
             <li class="video video3" style="background-image: url(assets/video2-thumb.jpg);"></li>
-            <li class="video video4" style="background-image: url(assets/video3-thumb.jpg);"></li>
-            <!-- <li class="video video4" style="background-image: url(assets/video4-thumb.jpg);"></li> -->
-            <!-- <li class="video video4" style="background-image: url(assets/video5-thumb.jpg);">
-                <div class="image" style="background-image: url(assets/youtube-thumbs/a6KGPBflhiM.jpg);"></div>
-                <div class="new" style="background-image: url(assets/icon-picture.png);"></div>
-            </li>
-            <li class="video video5">
-                <div class="image" style="background-image: url(assets/youtube-thumbs/a6KGPBflhiM.jpg);"></div>
-                <div class="new" style="background-image: url(assets/icon-video.png);"></div>
-            </li> -->
-        </ul>
+            <li class="video video4" style="background-image: url(assets/video3-thumb.jpg);"></li> -->
+            </ul>
+        </div>
     </div>
     <script src="scripts/vendor/jquery-3.1.1.min.js"></script>
     <script src="scripts/vendor/TweenMax.min.js"></script>
-    <script src="scripts/vendor/lodash.min.js"></script>
     <script src="scripts/model.js"></script>
-    <script src="scripts/script.js"></script>
-  </body>
+    <script src="scripts/views/video-player-view.js"></script>
+    <script src="scripts/views/thumbs-view.js"></script>
+</body>
+
 </html>
