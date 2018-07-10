@@ -97,9 +97,17 @@ html {
 .header-container {
   position: absolute;
   height: 60px;
-  padding: 18px 30px; }
+  top: 18px;
+  left: 30px;
+  color: #bbb; }
   .header-container__title {
-    color: #bbb;
     font-size: 1.5em; }
+  .header-container__link {
+    padding-left: 20px; }
+  .header-container a {
+    color: #bbb;
+    text-decoration: none; }
+  .header-container a:hover {
+    text-decoration: underline; }
 
 /*# sourceMappingURL=styles.css.map */

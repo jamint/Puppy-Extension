@@ -1,10 +1,21 @@
 .header-container {
     // opacity: 0;
-	position: absolute;
-	height: 60px;
-	padding: 18px 30px;
-	&__title {
-		color: #bbb;
-		font-size: 1.5em;
-	}
+    position: absolute;
+    height: 60px;
+    top: 18px; // padding: 18px 30px;
+    left: 30px;
+    color: #bbb;
+    &__title {
+        font-size: 1.5em;
+    }
+    &__link {
+        padding-left: 20px;
+    }
+    a {
+        color: #bbb;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
 }
