@@ -1,7 +1,7 @@
 {
 	"name": "Puppy Tab",
 	"short_name": "Puppy Tab",
-	"version": "0.1.7",
+	"version": "0.1.10",
     "manifest_version": 2,
     "browser_action": {
 		"default_title": "Puppy Tab",
@@ -9,7 +9,11 @@
          	"48": "img/icon48.png",
          	"128": "img/icon128.png"
          }
-	},
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
 	"icons": {
      	"48": "img/icon48.png",
      	"128": "img/icon128.png"
