@@ -1,0 +1,38 @@
+.menu {
+    position: absolute;
+    display: flex;
+    top: 10px;
+    right: 25px;
+    &__hamburger {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+    &__panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 400px;
+        background-color: #222;
+    }
+    &__line {
+        width: 30px;
+        height: 3px;
+        background: white;
+        margin-bottom: 6px;
+    }
+
+    &__content {
+        margin: 60px 40px;
+        text-align: center;
+        font-size: 1.1rem;
+        color: #fff;
+        line-height: 1.4rem;
+        p {
+            margin-bottom: 40px;
+        }
+    }
+}

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>New Tab</title>
     <link rel="stylesheet" href="styles/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
     <script src="scripts/app.js"></script>
 </head>
@@ -24,12 +25,35 @@
             <ul class="thumbs"></ul>
         </div>
     </div>
+    <div class="menu">
+        <div class="menu__panel hide">
+            <div class="menu__content">
+                <p>See Puppy Tab on the
+                    <a href="https://chrome.google.com/webstore/detail/puppy-tab/ajdhibnfbodboedckdpfmeelbdolboap?hl=en-US" target="_blank">Chrome Web Store</a>
+                </p>
+                <p>If you like Polar Tab, please consider giving it a
+                    <a href="https://chrome.google.com/webstore/detail/puppy-tab/ajdhibnfbodboedckdpfmeelbdolboap?hl=en-US" target="_blank">nice rating</a>!</p>
+                <p>For suggestions and feedback, email me at
+                    <a href="mailto:jadinteractive@gmail.com" target="_blank">jadmintun@gmail.com</a>
+                </p>
+            </div>
+        </div>
+        <div class="menu__hamburger">
+            <div class="open open-hamburger-state">
+                <div class="menu__line"></div>
+                <div class="menu__line"></div>
+                <div class="menu__line"></div>
+            </div>
+        </div>
+
+    </div>
     <script src="scripts/vendor/jquery-3.1.1.min.js"></script>
     <script src="scripts/vendor/TweenMax.min.js"></script>
     <script src="scripts/model.js"></script>
     <script src="scripts/views/video-player-view.js"></script>
     <script src="scripts/views/thumbs-view.js"></script>
     <script src="scripts/views/header-view.js"></script>
+    <script src="scripts/views/menu.js"></script>
 </body>
 
 </html>

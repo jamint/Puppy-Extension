@@ -17,7 +17,7 @@ html {
     height: 100%;
     overflow: hidden;
     background-color: #333;
-    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     font-size: 100%;
     box-sizing: border-box;
 }
@@ -80,5 +80,14 @@ html {
     color: white;
 }
 
-@import './_thumbs-container';
-@import './_header-container';
+a {
+    color: #fff;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+@import './thumbs-container';
+@import './header-container';
+@import './menu';
